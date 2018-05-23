@@ -1,5 +1,6 @@
 package org.akshanshgusain.recyclermultiview;
 
+import android.content.Context;
 import android.graphics.ColorSpace;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -18,11 +19,12 @@ import static org.akshanshgusain.recyclermultiview.MyModel.THIRD_TYPE;
 
 public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
-
+    Context mContext;
     List<MyModel> list;
 
-    public MyAdapter(List<MyModel> list) {
+    public MyAdapter(List<MyModel> list,Context mContext) {
         this.list=list;
+        this.mContext=mContext;
     }
 
     @Override
@@ -63,16 +65,41 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             case FIRST_TYPE:
                 Log.d("BindViewHolder",String.valueOf(FIRST_TYPE));
                 ((FirstViewHolder)holder).title.setText(model.getTitle());
+                ((FirstViewHolder)holder).title.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(mContext, "GG", Toast.LENGTH_SHORT).show();
+                    }
+                });
                 break;
             case SECOND_TYPE:
                 Log.d("BindViewHolder",String.valueOf(SECOND_TYPE));
                 ((SecondViewHolder)holder).title.setText(model.getTitle());
+                ((SecondViewHolder)holder).title.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(mContext, "GG", Toast.LENGTH_SHORT).show();
+                    }
+                });
                 break;
             case THIRD_TYPE:
                 Log.d("BindViewHolder",String.valueOf(SECOND_TYPE));
                 ((ThirdViewHolder)holder).title.setText(model.getTitle());
+                ((ThirdViewHolder)holder).title.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(mContext, "GG", Toast.LENGTH_SHORT).show();
+                    }
+                });
                 break;
         }
+       /* ((FirstViewHolder)holder).title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "GG", Toast.LENGTH_SHORT).show();
+            }
+        });*/
+
 
     }
 
